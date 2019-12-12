@@ -54,43 +54,6 @@ router.post("/",(req,res) => {
 });
 
 
-
-// router.post("/",(req,res) => {
-//     const newResult = req.body;
-//     newResult.user = req.user._id
-//     if(newResult){
-//         new Result({
-//                     _id : new mongoose.Types.ObjectId(),
-//                     match_id : req.body.match_id,
-//                     result_id:req.body.result_id,
-//                     comp_id : req.body.comp_id,
-//                     no_of_goals : req.body.no_of_goals,
-//                     no_of_yellowcards : req.body.no_of_yellowcards,
-//                     no_of_fouls_committed : req.body.no_of_fouls_committed,
-//                     scoreline : req.body.scoreline,
-//                     scorers : req.body.scorers
-//                 })
-//                 result
-//                 .save()
-//                 .then(document =>{
-//                     console.log(document);
-//                     res.status(201).json({
-//                         message : "Handling Post Request to /Results",
-//                         createdResult : document
-//                     });
-//                 })
-//                 .catch(err =>{
-//                     console.log(err);
-//                     res.status(500).json({
-//                         error : err
-//                     });
-//                 });
-//             }
-//         }
-// );
-        
-
-
 // get Result by id
 router.get("/:resultId", (req,res) => {
     const id = req.params.resultId;

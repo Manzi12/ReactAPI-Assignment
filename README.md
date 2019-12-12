@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # ReactFAssignment
 
 # BSc (Hons.) Level 8 - Assignment 1 - API

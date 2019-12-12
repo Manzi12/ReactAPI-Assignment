@@ -13,9 +13,6 @@ in this assignemnt i was meant to create an api that links my front end app that
 ![post working in console](public/post-in-console.png)
 ![post in postman ](public/post-in-postman.png)
 
-## Future
+## Future.
+
 i sliped back on these assignments as i laid them off to try and sort my placement, but this module just tught me alot on how these app we use everyday work or just alittle bit of how they work and as a developer in my own time i will make it my goal to complete an app with a server and client/frontend and backend just for the fun and accomplishment as i havent managed to do it in this moment.
-=======
-# ReactAPI-Assignment
-api
->>>>>>> f4de5c13a0cb9f498512c3fb43f1821e2dd08b7b

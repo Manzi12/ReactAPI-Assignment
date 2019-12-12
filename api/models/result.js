@@ -1,4 +1,5 @@
 import mongoose from 'mongoose';
+//import user from '../models/user';
 
 const resultSchema = mongoose.Schema({
     _id: mongoose.Schema.Types.ObjectId,
@@ -9,7 +10,8 @@ const resultSchema = mongoose.Schema({
     no_of_yellowcards: {type : Number, optional:true},
     no_of_fouls_committed: {type : Number, optional:true},
     scoreline: {type : String, required:true},
-    scorers:{type : Number, required:true}
+    scorers:{type : Number, required:true},
+    user: {type: mongoose.Schema.Types.ObjectId,ref:'User', required: true},
 });
 
 export default mongoose.model('Result', resultSchema);

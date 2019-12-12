@@ -33,22 +33,78 @@ router.post("/",(req,res) => {
         time : req.body.time,
         date : req.body.date
     })
-match
-.save()
-.then(document =>{
-    console.log(document);
-    res.status(201).json({
-        message : "Handling Post Request to /Matches",
-        createdMatch : document
+    match
+    .save()
+    .then(document =>{
+        console.log(document);
+        res.status(201).json({
+            message : "Handling Post Request to /Matches",
+            createdMatch : document
+        });
+    })
+    .catch(err =>{
+        console.log(err);
+        res.status(500).json({
+            error : err
+        });
     });
-})
-.catch(err =>{
-    console.log(err);
-    res.status(500).json({
-        error : err
+
+});
+
+
+// get Match by id
+router.get("/:matchId", (req,res) => {
+    const id = req.params.matchId;
+    Match.findById(id)
+    .exec()
+    .then(document => {
+        console.log("Documents already in the database",document);
+        if(document){
+            res.status(200).json(document);
+        }else{
+            res.status(404).json({
+                message : "No valid entry for the ID provided"
+            });
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({error:err});
     });
 });
 
+
+//updating the details of the match
+
+router.put("/:matchId", (req,res) => {
+    const id = req.params.matchId;
+    Match.update({_id:id}, {$set : {
+        match_id : req.body.newMatchId,
+        referee_id: req.body.newRefereeId,
+        comp_id: req.body.newCompId,
+        opponents: req.body.newOpponents,
+        venue: req.body.newVenue,
+        time: req.body.newTime,
+        date: req.body.newDate
+    }})
+})
+
+
+//delete a match
+
+router.delete("/:matchId", (req,res) => {
+    const id = req.params.matchId;
+    Match.remove({_id:id})
+    .exec()
+    .then(document => {
+        res.status(200).json(document);
+    })
+    .catch(err => {
+        console.log(err);
+        res.status(500).json({
+            error : err
+        });
+    });
 });
 
 

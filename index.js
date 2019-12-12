@@ -5,31 +5,19 @@ import mongoose from 'mongoose';
 import bodyParser from 'body-parser';
 
 import matchesRoutes from './api/routes/matches';
+import resultsRoutes from './api/routes/results';
 
 dotenv.config();
 
 
 mongoose.connect(
-  "mongodb+srv://manziAPIData:" + process.env.MONGO_PW + "@webappapidata-yatow.mongodb.net/test?retryWrites=true&w=majority",
-  {
-    useMongoClient : true
-  }
+  "mongodb+srv://manziAPIData:" + process.env.MONGO_PW + "@webappapidata-yatow.mongodb.net/test?retryWrites=true&w=majority"
 );
-
-
-
-// mongoose.connect(
-//   "mongodb+srv://manziAPIData:Nzdm6374@webappapidata-yatow.mongodb.net/test?retryWrites=true&w=majority",
-//   {
-//     useMongoClient = true
-//   }
-// );
-
 
 const app = express();
 app.use(bodyParser.json());
 app.use(morgan("dev"));
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded())
 
 
 const port = process.env.PORT;
@@ -51,6 +39,7 @@ app.use((req,res,next) => {
 });
 
 app.use("/matches", matchesRoutes);
+app.use("/results", resultsRoutes);
 
 app.listen(port, () => {
   console.info(`Server running at ${port}`);

@@ -6,6 +6,7 @@ import bodyParser from 'body-parser';
 
 import matchesRoutes from './api/routes/matches';
 import resultsRoutes from './api/routes/results';
+import usersRoutes from './api/routes/users';
 
 dotenv.config();
 
@@ -40,6 +41,7 @@ app.use((req,res,next) => {
 
 app.use("/matches", matchesRoutes);
 app.use("/results", resultsRoutes);
+app.use("/users", usersRoutes);
 
 app.listen(port, () => {
   console.info(`Server running at ${port}`);

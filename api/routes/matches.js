@@ -76,18 +76,25 @@ router.get("/:matchId", (req,res) => {
 
 //updating the details of the match
 
-router.put("/:matchId", (req,res) => {
+router.patch("/:matchId", (req,res) => {
     const id = req.params.matchId;
-    Match.update({_id:id}, {$set : {
-        match_id : req.body.newMatchId,
-        referee_id: req.body.newRefereeId,
-        comp_id: req.body.newCompId,
-        opponents: req.body.newOpponents,
-        venue: req.body.newVenue,
-        time: req.body.newTime,
-        date: req.body.newDate
-    }})
-})
+    const updateFunction = {};
+    for (const doc of req.body){
+        updateFunction[doc.propertyName] = doc.value;
+    }
+    Match.update({_id:id}, {$set:updateFunction})
+        .exec()
+        .then(document => {
+            console.log(document);
+            res.status(200).json(document);
+        })
+        .catch(err => {
+            console.log(err);
+            res.status(500).json({
+                error:err
+            });
+        });
+    });
 
 
 //delete a match

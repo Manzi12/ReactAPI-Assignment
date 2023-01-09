@@ -21,7 +21,7 @@
     "mongoose": "^5.8.0",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",
-    "passport-jwt": "^4.0.0",
+    "passport-jwt": "^4.0.1",
     "save-dev": "0.0.1-security"
   },
   "devDependencies": {
